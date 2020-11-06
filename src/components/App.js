@@ -1,4 +1,5 @@
 import React from "react";
+import LanguageContext from "../contexts/LanguageContext";
 import UserCreate from "./UserCreate";
 
 class App extends React.Component {
@@ -6,7 +7,7 @@ class App extends React.Component {
     language: "english",
   };
 
-  //arrow function as callback method passing off to something else in application (Grider)
+  //arrow function as callback method passing off to something else in application ( Grider)
   onLanguageChange = (language) => {
     this.setState({ language: language });
   };
@@ -24,10 +25,14 @@ class App extends React.Component {
             className="flag nl"
           />
         </div>
-        <UserCreate />
+
+        <LanguageContext.Provider value={this.state.language}>
+          <UserCreate />
+        </LanguageContext.Provider>
       </div>
     );
   }
 }
-
+//Wrap the component you want to pass the info too in the Provider Wrap
+//value is a set prop name
 export default App;
