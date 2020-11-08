@@ -1,5 +1,6 @@
 import React from "react";
 import LanguageContext from "../contexts/LanguageContext";
+import ColorContext from "../contexts/ColorContext";
 import UserCreate from "./UserCreate";
 
 class App extends React.Component {
@@ -25,14 +26,17 @@ class App extends React.Component {
             className="flag nl"
           />
         </div>
-
-        <LanguageContext.Provider value={this.state.language}>
-          <UserCreate />
-        </LanguageContext.Provider>
+        <ColorContext.Provider value="red">
+          <LanguageContext.Provider value={this.state.language}>
+            <UserCreate />
+          </LanguageContext.Provider>
+        </ColorContext.Provider>
       </div>
     );
   }
 }
 //Wrap the component you want to pass the info too in the Provider Wrap
 //value is a set prop name
+//Each new component of context.Provider is a new instance so new pipe of info
+
 export default App;
