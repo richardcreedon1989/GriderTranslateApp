@@ -5,15 +5,15 @@ class Button extends React.Component {
   // static contextType = LanguageContext; //sets up contextType property - hooks up context object to class component
   //adds property to the class Button - could also be Button.contextType etc just before export
 
-  renderSubmit(value) {
-    return value === "english" ? "Submit" : "Voorleggen";
+  renderSubmit(language) {
+    return language === "english" ? "Submit" : "Voorleggen";
   }
   //contexttype not needed when using consumer component
   renderButton(color) {
     return (
       <button className={`ui button ${color}`}>
         <LanguageContext.Consumer>
-          {(value) => this.renderSubmit(value)}
+          {({ language }) => this.renderSubmit(language)}
         </LanguageContext.Consumer>
       </button>
     );
